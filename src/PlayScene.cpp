@@ -20,17 +20,11 @@ void PlayScene::draw()
 {
 	drawDisplayList();
 	SDL_SetRenderDrawColor(Renderer::Instance().getRenderer(), 255, 255, 255, 255);
+
+	//draw background here, pull from OG
+
 }
 
-//void PlayScene::moveStarShip() const
-//{
-//	if(m_bToggleGrid)
-//	{
-//		m_pStarShip->setDesiredVelocity(m_pTarget->getTransform()->position);
-//		m_pStarShip->getRigidBody()->velocity = m_pStarShip->getDesiredVelocity();
-//		m_pStarShip->getTransform()->position += m_pStarShip->getRigidBody()->velocity;
-//	}
-//}
 
 void PlayScene::update()
 {
