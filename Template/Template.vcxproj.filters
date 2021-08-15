@@ -34,6 +34,21 @@
     <Filter Include="Decision Stuff">
       <UniqueIdentifier>{76774a0f-df07-42ed-b72c-e1c6735c74bc}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Decision Stuff\Actions">
+      <UniqueIdentifier>{f7a94dc0-c4e6-4d5c-beb0-f767a90f8574}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Decision Stuff\Nodes">
+      <UniqueIdentifier>{3a59b309-044e-4860-a803-be9037e7a3a5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Decision Stuff\Conditions">
+      <UniqueIdentifier>{b5f29b77-1d1f-487b-891a-047d6cadc7ea}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Decision Stuff\Characters">
+      <UniqueIdentifier>{ccad16c3-47d3-4711-978c-4a939ccb55a3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Decision Stuff\Additional Things">
+      <UniqueIdentifier>{aeedd9d7-0cde-497e-bda2-1a569b00e4bb}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\StartScene.cpp">
@@ -144,14 +159,74 @@
     <ClCompile Include="..\src\NavigationObject.cpp">
       <Filter>Core</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\Agent.cpp">
-      <Filter>Decision Stuff</Filter>
+    <ClCompile Include="..\src\CloseCombatAction.cpp">
+      <Filter>Decision Stuff\Actions</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\Health.cpp">
-      <Filter>Decision Stuff</Filter>
+    <ClCompile Include="..\src\FleeAction.cpp">
+      <Filter>Decision Stuff\Actions</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\MoveBehindCoverAction.cpp">
+      <Filter>Decision Stuff\Actions</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\MoveToLOSAction.cpp">
+      <Filter>Decision Stuff\Actions</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\MoveToPlayerAction.cpp">
+      <Filter>Decision Stuff\Actions</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\MoveToRangeAction.cpp">
+      <Filter>Decision Stuff\Actions</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\PatrolAction.cpp">
+      <Filter>Decision Stuff\Actions</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\RangeAttackAction.cpp">
+      <Filter>Decision Stuff\Actions</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\WaitBehindCoverAction.cpp">
+      <Filter>Decision Stuff\Actions</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\MapNode.cpp">
+      <Filter>Decision Stuff\Nodes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\AttackRangeCondition.cpp">
+      <Filter>Decision Stuff\Conditions</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\BehindCoverCondition.cpp">
+      <Filter>Decision Stuff\Conditions</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\CloseCombatCondition.cpp">
+      <Filter>Decision Stuff\Conditions</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\HealthCondition.cpp">
+      <Filter>Decision Stuff\Conditions</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\LOSCondition.cpp">
+      <Filter>Decision Stuff\Conditions</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\RadiusCondition.cpp">
+      <Filter>Decision Stuff\Conditions</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\RecentlyHitCondition.cpp">
+      <Filter>Decision Stuff\Conditions</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\TooCloseCondition.cpp">
+      <Filter>Decision Stuff\Conditions</Filter>
     </ClCompile>
     <ClCompile Include="..\src\Enemy.cpp">
-      <Filter>Decision Stuff</Filter>
+      <Filter>Decision Stuff\Characters</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Huntress.cpp">
+      <Filter>Decision Stuff\Characters</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\DecisionTree.cpp">
+      <Filter>Decision Stuff\Additional Things</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Health.cpp">
+      <Filter>Decision Stuff\Additional Things</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Agent.cpp">
+      <Filter>Decision Stuff\Additional Things</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -314,14 +389,86 @@
     <ClInclude Include="..\src\Agent.h">
       <Filter>Decision Stuff</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\AgentType.h">
-      <Filter>Decision Stuff</Filter>
+    <ClInclude Include="..\src\CloseCombatAction.h">
+      <Filter>Decision Stuff\Actions</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\Health.h">
-      <Filter>Decision Stuff</Filter>
+    <ClInclude Include="..\src\FleeAction.h">
+      <Filter>Decision Stuff\Actions</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\MoveBehindCoverAction.h">
+      <Filter>Decision Stuff\Actions</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\MoveToLOSAction.h">
+      <Filter>Decision Stuff\Actions</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\MoveToPlayerAction.h">
+      <Filter>Decision Stuff\Actions</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\MoveToRangeAction.h">
+      <Filter>Decision Stuff\Actions</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\PatrolAction.h">
+      <Filter>Decision Stuff\Actions</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\RangeAttackAction.h">
+      <Filter>Decision Stuff\Actions</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\WaitBehindCoverAction.h">
+      <Filter>Decision Stuff\Actions</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\ActionNode.h">
+      <Filter>Decision Stuff\Nodes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\TreeNode.h">
+      <Filter>Decision Stuff\Nodes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\ConditionNode.h">
+      <Filter>Decision Stuff\Nodes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\MapNode.h">
+      <Filter>Decision Stuff\Nodes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\AttackRangeCondition.h">
+      <Filter>Decision Stuff\Conditions</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\BehindCoverCondition.h">
+      <Filter>Decision Stuff\Conditions</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\CloseCombatCondition.h">
+      <Filter>Decision Stuff\Conditions</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\HealthCondition.h">
+      <Filter>Decision Stuff\Conditions</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\LOSCondition.h">
+      <Filter>Decision Stuff\Conditions</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\RadiusCondition.h">
+      <Filter>Decision Stuff\Conditions</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\RecentlyHitCondition.h">
+      <Filter>Decision Stuff\Conditions</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\TooCloseCondition.h">
+      <Filter>Decision Stuff\Conditions</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\TreeNodeType.h">
+      <Filter>Decision Stuff\Nodes</Filter>
     </ClInclude>
     <ClInclude Include="..\src\Enemy.h">
-      <Filter>Decision Stuff</Filter>
+      <Filter>Decision Stuff\Characters</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\Huntress.h">
+      <Filter>Decision Stuff\Characters</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\Health.h">
+      <Filter>Decision Stuff\Additional Things</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\DecisionTree.h">
+      <Filter>Decision Stuff\Additional Things</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\AgentType.h">
+      <Filter>Decision Stuff\Additional Things</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

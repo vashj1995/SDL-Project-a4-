@@ -8,6 +8,8 @@ Agent::Agent()
 {
 	m_agentHealth = new Health();
 }
+Agent::~Agent()
+= default;
 
 bool Agent::getXMoving() const
 {
@@ -202,8 +204,18 @@ glm::vec4 Agent::getMinFireDistancecolour()
 	return m_minFireDistanceColour;
 }
 
-Agent::~Agent()
-= default;
+void Agent::move()
+{
+}
+
+void Agent::rotate()
+{
+}
+
+void Agent::flee()
+{
+}
+
 
 glm::vec2 Agent::getTargetPosition() const
 {

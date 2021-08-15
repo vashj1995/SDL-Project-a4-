@@ -19,6 +19,10 @@ public:
 	void update() override = 0;
 	void clean() override = 0;
 
+	virtual void move();
+	virtual void rotate();
+	virtual void flee();
+
 	// getters
 	glm::vec2 getTargetPosition() const;
 	glm::vec2 getCurrentDirection() const;

@@ -75,7 +75,7 @@ void StartScene::start()
 
 	const SDL_Color teal = { 0, 170, 145, 255 };
 
-	m_pInstructionsLabel = new Label("Game 3001 Assignment 3", "IMMORTAL", 60, teal, glm::vec2(400.0f, 80.0f));
+	m_pInstructionsLabel = new Label("Game 3001 Assignment 4", "IMMORTAL", 60, teal, glm::vec2(400.0f, 80.0f));
 	m_pInstructionsLabel->setParent(this);
 	addChild(m_pInstructionsLabel);
 
