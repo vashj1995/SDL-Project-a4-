@@ -7,7 +7,7 @@
 #include "EventManager.h"
 
 
-//Game* Game::s_pInstance = nullptr;
+Game* Game::s_pInstance = nullptr;
 
 // Game functions - DO NOT REMOVE ***********************************************
 

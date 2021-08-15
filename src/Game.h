@@ -25,10 +25,14 @@
 class Game
 {
 public:
-	static Game& Instance()
+
+	static Game* Instance()
 	{
-		static Game instance;
-		return instance;
+		if (s_pInstance == nullptr)
+		{
+			s_pInstance = new Game();
+		}
+		return s_pInstance;
 	}
 
 	// simply set the isRunning variable to true
@@ -73,6 +77,8 @@ private:
 
 	// storage structures
 	std::shared_ptr<SDL_Window> m_pWindow;
+	static Game* s_pInstance;
+
 };
 
 typedef Game TheGame;

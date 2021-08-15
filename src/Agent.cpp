@@ -1,9 +1,12 @@
 #include "Agent.h"
-
+#include "glm/gtx/string_cast.hpp"
+#include "PlayScene.h"
+#include "TextureManager.h"
 #include "Util.h"
 
 Agent::Agent()
 {
+	m_agentHealth = new Health();
 }
 
 Agent::~Agent()

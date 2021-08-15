@@ -3,9 +3,12 @@
 #define __AGENT__
 
 #include <glm/vec4.hpp>
-#include "NavigationObject.h"
+#include "DisplayObject.h"
+#include "Health.h"
+#include "EventManager.h"
+#include "AgentType.h"
 
-class Agent : public NavigationObject
+class Agent : public DisplayObject
 {
 public:
 	Agent();

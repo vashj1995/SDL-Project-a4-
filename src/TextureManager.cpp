@@ -8,6 +8,8 @@
 #include <iterator>
 #include "Renderer.h"
 
+TextureManager* TextureManager::s_pInstance = nullptr;
+
 TextureManager::TextureManager()
 = default;
 

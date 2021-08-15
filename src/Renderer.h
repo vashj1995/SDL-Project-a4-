@@ -8,10 +8,13 @@
 class Renderer
 {
 public:
-	static Renderer& Instance()
+	static Renderer* Instance()
 	{
-		static Renderer instance;
-		return instance;
+		if (s_pInstance == nullptr)
+		{
+			s_pInstance = new Renderer();
+		}
+		return s_pInstance;
 	}
 
 	// getters and setters
@@ -23,6 +26,7 @@ private:
 	~Renderer();
 
 	std::shared_ptr<SDL_Renderer> m_pRenderer;
+	static Renderer* s_pInstance;
 };
 
 #endif /* defined (__RENDERER__) */

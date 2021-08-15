@@ -20,10 +20,13 @@
 class TextureManager
 {
 public:
-	static TextureManager& Instance()
+	static TextureManager* Instance()
 	{
-		static TextureManager instance;
-		return instance;
+		if (s_pInstance == nullptr)
+		{
+			s_pInstance = new TextureManager();
+		}
+		return s_pInstance;
 	}
 
 	// loading functions
@@ -68,6 +71,8 @@ private:
 	// storage structures
 	std::unordered_map<std::string, std::shared_ptr<SDL_Texture>> m_textureMap;
 	std::unordered_map<std::string, SpriteSheet*> m_spriteSheetMap;
+	static TextureManager* s_pInstance;
+
 };
 
 #endif /* defined(__TEXTURE_MANAGER__) */

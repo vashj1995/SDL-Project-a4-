@@ -2,6 +2,9 @@
 
 #include <utility>
 
+Renderer* Renderer::s_pInstance = nullptr;
+
+
 SDL_Renderer* Renderer::getRenderer()
 {
 	return m_pRenderer.get();

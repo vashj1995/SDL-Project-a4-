@@ -31,6 +31,9 @@
     <Filter Include="DOCS">
       <UniqueIdentifier>{a44d29c3-2835-4901-a310-0039121b84b9}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Decision Stuff">
+      <UniqueIdentifier>{76774a0f-df07-42ed-b72c-e1c6735c74bc}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\StartScene.cpp">
@@ -114,9 +117,6 @@
     <ClCompile Include="..\src\Obstacle.cpp">
       <Filter>Game Objects</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\Agent.cpp">
-      <Filter>Core</Filter>
-    </ClCompile>
     <ClCompile Include="..\include\IMGUI\imgui.cpp">
       <Filter>IMGUI</Filter>
     </ClCompile>
@@ -143,6 +143,12 @@
     </ClCompile>
     <ClCompile Include="..\src\NavigationObject.cpp">
       <Filter>Core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Agent.cpp">
+      <Filter>Decision Stuff</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Health.cpp">
+      <Filter>Decision Stuff</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -263,9 +269,6 @@
     <ClInclude Include="..\src\Obstacle.h">
       <Filter>Game Objects</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\Agent.h">
-      <Filter>Core</Filter>
-    </ClInclude>
     <ClInclude Include="..\include\IMGUI\imconfig.h">
       <Filter>IMGUI</Filter>
     </ClInclude>
@@ -304,6 +307,15 @@
     </ClInclude>
     <ClInclude Include="..\src\Heuristic.h">
       <Filter>Enums</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\Agent.h">
+      <Filter>Decision Stuff</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\AgentType.h">
+      <Filter>Decision Stuff</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\Health.h">
+      <Filter>Decision Stuff</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
