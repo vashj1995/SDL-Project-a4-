@@ -41,7 +41,7 @@ bool TextureManager::load(const std::string & file_name, const std::string & id)
 		return false;
 	}
 
-	const auto pTexture(Config::make_resource(SDL_CreateTextureFromSurface(Renderer::Instance().getRenderer(), pTempSurface.get())));
+	const auto pTexture(Config::make_resource(SDL_CreateTextureFromSurface(Renderer::Instance()->getRenderer(), pTempSurface.get())));
 
 	// everything went ok, add the texture to our list
 	if (pTexture != nullptr)
@@ -145,7 +145,7 @@ void TextureManager::draw(const std::string & id, const int x, const int y, cons
 	}
 
 	SDL_SetTextureAlphaMod(m_textureMap[id].get(), alpha);
-	SDL_RenderCopyEx(Renderer::Instance().getRenderer(), m_textureMap[id].get(), &srcRect, &destRect, angle, nullptr, flip);
+	SDL_RenderCopyEx(Renderer::Instance()->getRenderer(), m_textureMap[id].get(), &srcRect, &destRect, angle, nullptr, flip);
 }
 
 void TextureManager::drawFrame(const std::string & id, const int x, const int y, const int frame_width,
@@ -188,7 +188,7 @@ void TextureManager::drawFrame(const std::string & id, const int x, const int y,
 	}
 
 	SDL_SetTextureAlphaMod(m_textureMap[id].get(), alpha);
-	SDL_RenderCopyEx(Renderer::Instance().getRenderer(), m_textureMap[id].get(), &srcRect, &destRect, angle, nullptr, flip);
+	SDL_RenderCopyEx(Renderer::Instance()->getRenderer(), m_textureMap[id].get(), &srcRect, &destRect, angle, nullptr, flip);
 }
 
 void TextureManager::animateFrames(int frame_width, int frame_height, const int frame_number, const int row_number, const float speed_factor, int& current_frame, int& current_row)
@@ -199,7 +199,7 @@ void TextureManager::animateFrames(int frame_width, int frame_height, const int 
 
 	if (frame_number > 1)
 	{
-		if (TheGame::Instance().getFrames() % animationRate == 0)
+		if (TheGame::Instance()->getFrames() % animationRate == 0)
 		{
 			current_frame++;
 			if (current_frame > frame_number - 1)
@@ -226,7 +226,7 @@ void TextureManager::playAnimation(
 
 	if (totalFrames > 1)
 	{
-		if (TheGame::Instance().getFrames() % animationRate == 0)
+		if (TheGame::Instance()->getFrames() % animationRate == 0)
 		{
 			animation.current_frame++;
 			if (animation.current_frame > totalFrames - 1)
@@ -268,7 +268,7 @@ void TextureManager::playAnimation(
 	}
 
 	SDL_SetTextureAlphaMod(m_textureMap[sprite_sheet_name].get(), alpha);
-	SDL_RenderCopyEx(Renderer::Instance().getRenderer(), m_textureMap[sprite_sheet_name].get(), &srcRect, &destRect, angle, nullptr, flip);
+	SDL_RenderCopyEx(Renderer::Instance()->getRenderer(), m_textureMap[sprite_sheet_name].get(), &srcRect, &destRect, angle, nullptr, flip);
 }
 
 void TextureManager::drawText(const std::string & id, const int x, const int y, const double angle, const int alpha, const bool centered, const SDL_RendererFlip flip)
@@ -298,7 +298,7 @@ void TextureManager::drawText(const std::string & id, const int x, const int y, 
 	}
 
 	SDL_SetTextureAlphaMod(m_textureMap[id].get(), alpha);
-	SDL_RenderCopyEx(Renderer::Instance().getRenderer(), m_textureMap[id].get(), &srcRect, &destRect, angle, nullptr, flip);
+	SDL_RenderCopyEx(Renderer::Instance()->getRenderer(), m_textureMap[id].get(), &srcRect, &destRect, angle, nullptr, flip);
 }
 
 glm::vec2 TextureManager::getTextureSize(const std::string & id)

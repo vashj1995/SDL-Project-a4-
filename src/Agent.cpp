@@ -9,6 +9,199 @@ Agent::Agent()
 	m_agentHealth = new Health();
 }
 
+bool Agent::getXMoving() const
+{
+	return m_isXMoving;
+}
+
+bool Agent::getYMoving() const
+{
+	return m_isYMoving;
+}
+
+AgentType Agent::getAgentType() const
+{
+	return m_Type;
+}
+
+void Agent::setAgentType(AgentType type)
+{
+	m_Type = type;
+}
+
+void Agent::setXMoving(bool state)
+{
+	m_isXMoving = state;
+}
+
+void Agent::setYMoving(bool state)
+{
+	m_isYMoving = state;
+}
+
+bool Agent::getMoving() const
+{
+	return m_isMoving;
+}
+
+void Agent::setMoving(bool state)
+{
+	m_isMoving = state;
+}
+
+bool Agent::getDebugState() const
+{
+	return m_DebugEnabled;
+}
+
+void Agent::setDebug(bool state)
+{
+	m_DebugEnabled = state;
+}
+
+void Agent::setHealth(int health)
+{
+	m_agentHealth->setHealthCount(health);
+}
+
+int Agent::getHealth()
+{
+	return m_agentHealth->getHealthCount();
+}
+
+bool Agent::getCloseCombat() const
+{
+	return m_CloseCombatRange;
+}
+
+bool Agent::getHealthState() const
+{
+	return m_HealthState;
+}
+
+bool Agent::getRangedAttackState() const //bool for in attack range
+{
+	return m_RangedAttack;
+}
+
+bool Agent::getInRange() const //bool for if too close
+{
+	return m_inRangeDistance;
+}
+
+void Agent::setInrange(bool state)
+{
+	m_inRangeDistance = state;
+	m_minFireDistanceColour = (m_inRangeDistance) ? glm::vec4(0, 1, 0, 1) : glm::vec4(0, 0, 1, 1);
+}
+
+void Agent::SetHitTimer(int timer)
+{
+	m_RecentlyHitTimer = timer;
+}
+
+int Agent::getHitTimer()
+{
+	return m_RecentlyHitTimer;
+}
+
+bool Agent::getBehindCoverState() const
+{
+	return m_isBehindCover;
+}
+
+bool Agent::getHitState() const
+{
+	return m_isRecentlyHit;
+}
+
+void Agent::setCloseCombat(bool state)
+{
+	m_CloseCombatRange = state;
+}
+
+void Agent::setHealthState(bool state)
+{
+	m_HealthState = state;
+}
+
+void Agent::setRangedAttackState(bool state)
+{
+	m_RangedAttack = state;
+}
+
+void Agent::setBehindCoverState(bool state)
+{
+	m_isBehindCover = state;
+}
+
+void Agent::setHitState(bool state)
+{
+	m_isRecentlyHit = state;
+}
+
+void Agent::setHealthPostion(glm::vec2 postion)
+{
+	m_agentHealth->getTransform()->position = postion;
+}
+
+void Agent::drawHeath()
+{
+	if (m_agentHealth != nullptr)
+		m_agentHealth->draw();
+}
+
+void Agent::setFireDistance(int distance)
+{
+	m_fireDistance = distance;
+}
+
+int Agent::getFireDistance()
+{
+	return m_fireDistance;
+}
+
+void Agent::setFireDetectionColour(glm::vec4 colour)
+{
+	m_FireDistanceColour = colour;
+}
+
+void Agent::setIsInFireDetection(bool state)
+{
+	m_isInFireDistance = state;
+	m_FireDistanceColour = (m_isInFireDistance) ? glm::vec4(0, 1, 0, 1) : glm::vec4(0, 0, 1, 1);
+}
+
+bool Agent::getisInFireDistance()
+{
+	return m_isInFireDistance;
+}
+
+glm::vec4 Agent::getFireDetectionColour()
+{
+	return m_FireDistanceColour;
+}
+
+void Agent::setMinFireDistance(int distance)
+{
+	m_MinFireDistance = distance;
+}
+
+int Agent::getMinFireDistance()
+{
+	return m_MinFireDistance;
+}
+
+void Agent::setminFireDistanceColour(glm::vec4 colour)
+{
+	m_minFireDistanceColour = colour;
+}
+
+glm::vec4 Agent::getMinFireDistancecolour()
+{
+	return m_minFireDistanceColour;
+}
+
 Agent::~Agent()
 = default;
 

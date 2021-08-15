@@ -40,11 +40,11 @@ bool FontManager::textToTexture(const std::string& text, const std::string& font
 	}
 	else
 	{
-		const auto pTexture(Config::make_resource(SDL_CreateTextureFromSurface(/* TheGame::Instance()->getRenderer()*/ Renderer::Instance().getRenderer(), textSurface.get())));
+		const auto pTexture(Config::make_resource(SDL_CreateTextureFromSurface(/* TheGame::Instance()->getRenderer()*/ Renderer::Instance()->getRenderer(), textSurface.get())));
 
 		//Create texture from surface pixels
-		TextureManager::Instance().addTexture(texture_id, pTexture);
-		if (TextureManager::Instance().getTexture(texture_id) == nullptr)
+		TextureManager::Instance()->addTexture(texture_id, pTexture);
+		if (TextureManager::Instance()->getTexture(texture_id) == nullptr)
 		{
 			printf("Unable to create texture from rendered text! SDL Error: %s\n", SDL_GetError());
 			return false;

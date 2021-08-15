@@ -11,6 +11,11 @@
 PlayScene::PlayScene()
 {
 	PlayScene::start();
+	SoundManager::Instance().load("../Assets/audio/forest.ogg", "forest", SOUND_MUSIC);
+	SoundManager::Instance().allocateChannels(16);
+	SoundManager::Instance().setMusicVolume(10);
+	SoundManager::Instance().setSoundVolume(25);
+	SoundManager::Instance().playMusic("forest", -1, 0);
 }
 
 PlayScene::~PlayScene()
@@ -19,9 +24,9 @@ PlayScene::~PlayScene()
 void PlayScene::draw()
 {
 	drawDisplayList();
-	SDL_SetRenderDrawColor(Renderer::Instance().getRenderer(), 255, 255, 255, 255);
+	SDL_SetRenderDrawColor(Renderer::Instance()->getRenderer(), 255, 255, 255, 255);
 
-	//draw background here, pull from OG
+	TextureManager::Instance()->draw("Background", 0, getTransform()->position.y, 0, 255, false);
 
 }
 
@@ -30,7 +35,7 @@ void PlayScene::update()
 {
 	updateDisplayList();
 
-	m_CheckShipLOS(m_pTarget);
+	//m_CheckShipLOS(m_pTarget);
 }
 
 void PlayScene::clean()
@@ -44,39 +49,36 @@ void PlayScene::handleEvents()
 
 	if (EventManager::Instance().isKeyDown(SDL_SCANCODE_ESCAPE))
 	{
-		TheGame::Instance().quit();
+		TheGame::Instance()->quit();
 	}
 }
 
 void PlayScene::start()
 {
+	TextureManager::Instance()->load("../Assets/textures/playScene.jpg", "Background");
+
+	//Sound stuff
+	SoundManager::Instance().load("../Assets/audio/chickenChase.ogg", "eChase", SOUND_SFX);
+	SoundManager::Instance().load("../Assets/audio/chickenDie.ogg", "eDie", SOUND_SFX);
+	SoundManager::Instance().load("../Assets/audio/chickenIdle.ogg", "eIdle", SOUND_SFX);
+	SoundManager::Instance().load("../Assets/audio/melee.ogg", "melee", SOUND_SFX);
+	SoundManager::Instance().load("../Assets/audio/ranged.ogg", "range", SOUND_SFX);
+	SoundManager::Instance().load("../Assets/audio/walking.ogg", "pWalk", SOUND_SFX);
+
 	// Set GUI Title
 	m_guiTitle = "Play Scene";
 
-	// add the ship to the scene as a start point
-	m_pShip = new Ship();
-	m_pShip->getTransform()->position = glm::vec2(200.f, 300.f);
-	addChild(m_pShip, 3);
+	const SDL_Color white = { 255,255,255, 255 };
 
-	// add the Obstacle to the scene as a start point
-	m_pObstacle1 = new Obstacle ();
-	m_pObstacle1->getTransform()->position = glm::vec2(400.f, 300.f);
-	addChild(m_pObstacle1);
+	m_pInstructions = new Label("(P - Enemy patrol) (H - Debug view) (W,A,S,D - Moves player)", "IMMORTAL", 15, white, glm::vec2(400.0f, 540.0f));
+	m_pInstructions->setParent(this);
+	addChild(m_pInstructions);
 
-	// add the Obstacle to the scene as a start point
-	m_pObstacle2 = new Obstacle();
-	m_pObstacle2->getTransform()->position = glm::vec2(200.f, 100.f);
-	addChild(m_pObstacle2);
-
-	// add the Obstacle to the scene as a start point
-	m_pObstacle3 = new Obstacle();
-	m_pObstacle3->getTransform()->position = glm::vec2(200.f, 500.f);
-	addChild(m_pObstacle3);
-
-	// added the target to the scene a goal
-	m_pTarget = new Target();
-	m_pTarget->getTransform()->position = glm::vec2(600.f, 300.f);
-	addChild(m_pTarget);
+	//She struggles with running animation but it's a start
+	//m_pHunt = new Huntress();
+	//m_pHunt->getTransform()->position = glm::vec2(740.0f, 550.0f);
+	//addChild(m_pHunt, 2);
+	//m_huntFacingRight = true;
 
 	ImGuiWindowFrame::Instance().setGUIFunction(std::bind(&PlayScene::GUI_Function, this));
 }
@@ -100,52 +102,52 @@ void PlayScene::GUI_Function()
 	static int angle;
 	if (ImGui::SliderInt("Ship Direction", &angle, -360, 360))
 	{
-		m_pShip->setCurrentHeading(angle);
+		//m_pShip->setCurrentHeading(angle);
 	}
 
 	ImGui::Separator();
 
-	static int shipPosition[] = { m_pShip->getTransform()->position.x, m_pShip->getTransform()->position.y };
-	if (ImGui::SliderInt2("Ship Position", shipPosition, 0, 800))
-	{
-		m_pShip->getTransform()->position.x = shipPosition[0];
-		m_pShip->getTransform()->position.y = shipPosition[1];
-	}
+	//static int shipPosition[] = { m_pShip->getTransform()->position.x, m_pShip->getTransform()->position.y };
+	//if (ImGui::SliderInt2("Ship Position", shipPosition, 0, 800))
+	//{
+	//	m_pShip->getTransform()->position.x = shipPosition[0];
+	//	m_pShip->getTransform()->position.y = shipPosition[1];
+	//}
 
-	static int targetPosition[] = { m_pTarget->getTransform()->position.x, m_pTarget->getTransform()->position.y };
-	if (ImGui::SliderInt2("Target Position", targetPosition, 0, 800))
-	{
-		m_pTarget->getTransform()->position.x = targetPosition[0];
-		m_pTarget->getTransform()->position.y = targetPosition[1];
-	}
+	//static int targetPosition[] = { m_pTarget->getTransform()->position.x, m_pTarget->getTransform()->position.y };
+	//if (ImGui::SliderInt2("Target Position", targetPosition, 0, 800))
+	//{
+	//	m_pTarget->getTransform()->position.x = targetPosition[0];
+	//	m_pTarget->getTransform()->position.y = targetPosition[1];
+	//}
 
 	ImGui::Separator();
 	
 	ImGui::End();
 }
 
-void PlayScene::m_CheckShipLOS(DisplayObject* target_object)
-{
-	m_pShip->setHasLOS(false);
-	auto ShipToTargetDistance = Util::distance(m_pShip->getTransform()->position, m_pTarget->getTransform()->position);
-	if (ShipToTargetDistance <= m_pShip->getLOSDistance())
-	{
-		std::vector<DisplayObject*> contactList;
-		for (auto object : getDisplayList())
-		{
-
-			auto ShipToObjectDistance = Util::distance(m_pShip->getTransform()->position, object->getTransform()->position);
-			if (ShipToObjectDistance <= ShipToTargetDistance)
-			{
-				if ((object->getType() != m_pShip->getType()) && (object->getType() !=target_object->getType()))
-				{
-					contactList.push_back(object);
-				}
-			}
-		}
-		contactList.push_back(target_object);
-		auto hasLOS = CollisionManager::LOSCheck(m_pShip->getTransform()->position, m_pShip->getTransform()->position + m_pShip->getCurrentDirection() * m_pShip->getLOSDistance(), contactList, target_object);
-		m_pShip->setHasLOS(hasLOS);
-
-	}
-}
+//void PlayScene::m_CheckShipLOS(DisplayObject* target_object)
+//{
+//	m_pShip->setHasLOS(false);
+//	auto ShipToTargetDistance = Util::distance(m_pShip->getTransform()->position, m_pTarget->getTransform()->position);
+//	if (ShipToTargetDistance <= m_pShip->getLOSDistance())
+//	{
+//		std::vector<DisplayObject*> contactList;
+//		for (auto object : getDisplayList())
+//		{
+//
+//			auto ShipToObjectDistance = Util::distance(m_pShip->getTransform()->position, object->getTransform()->position);
+//			if (ShipToObjectDistance <= ShipToTargetDistance)
+//			{
+//				if ((object->getType() != m_pShip->getType()) && (object->getType() !=target_object->getType()))
+//				{
+//					contactList.push_back(object);
+//				}
+//			}
+//		}
+//		contactList.push_back(target_object);
+//		auto hasLOS = CollisionManager::LOSCheck(m_pShip->getTransform()->position, m_pShip->getTransform()->position + m_pShip->getCurrentDirection() * m_pShip->getLOSDistance(), contactList, target_object);
+//		m_pShip->setHasLOS(hasLOS);
+//
+//	}
+//}

@@ -31,7 +31,7 @@ void EventManager::update()
             switch (event.type)
             {
             case SDL_QUIT:
-                TheGame::Instance().quit();
+                TheGame::Instance()->quit();
                 break;
 
             case SDL_MOUSEMOTION:
@@ -121,7 +121,7 @@ void EventManager::update()
                     }
                     else
                     {
-                        TheGame::Instance().quit();
+                        TheGame::Instance()->quit();
                     }
                     break;
                 case SDL_WINDOWEVENT_FOCUS_GAINED:

@@ -17,15 +17,15 @@ int main(int argc, char* args[])
 	AllocConsole();
 	freopen("CON", "w", stdout);
 
-	TheGame::Instance().init("SDLEngine v0.26", 100, 100, 800, 600, false);
+	TheGame::Instance()->init("SDLEngine v0.26", 100, 100, 800, 600, false);
 
-	while (TheGame::Instance().isRunning())
+	while (TheGame::Instance()->isRunning())
 	{
 		frameStart = SDL_GetTicks();
 
-		TheGame::Instance().handleEvents();
-		TheGame::Instance().update();
-		TheGame::Instance().render();
+		TheGame::Instance()->handleEvents();
+		TheGame::Instance()->update();
+		TheGame::Instance()->render();
 
 		frameTime = SDL_GetTicks() - frameStart;
 		if (frameTime < DELAY_TIME)
@@ -35,14 +35,14 @@ int main(int argc, char* args[])
 
 		// delta time
 		auto deltaTime = float(SDL_GetTicks() - frameStart) / 1000.0f;
-		TheGame::Instance().setDeltaTime(deltaTime);
+		TheGame::Instance()->setDeltaTime(deltaTime);
 
 		frames++;
-		TheGame::Instance().setFrames(frames);
+		TheGame::Instance()->setFrames(frames);
 
 	}
 
-	TheGame::Instance().clean();
+	TheGame::Instance()->clean();
 	return 0;
 }
 

@@ -29,18 +29,23 @@ private:
 	void GUI_Function();
 	std::string m_guiTitle;
 	glm::vec2 m_mousePosition;
-	bool m_isGridEnabled;
 
-	// Game Objects
+	//Huntress
+	//Huntress* m_pHunt;
+	bool m_huntFacingRight;
+
+	//Chicken
+	//Enemy* m_pChicky;
+
+	//Target
 	Target* m_pTarget;
-	Ship* m_pShip;
-	Obstacle* m_pObstacle1;
-	Obstacle* m_pObstacle2;
-	Obstacle* m_pObstacle3;
-	void m_CheckShipLOS(DisplayObject* object);
 
-	// UI Controls
-	bool m_bToggleGrid;
+	//Obstacles
+	Obstacle* m_pObstacle[5];
+
+	//labels 
+	Label* m_pInstructions{};
+	Label* m_UIScore;
 };
 
 #endif /* defined (__PLAY_SCENE__) */

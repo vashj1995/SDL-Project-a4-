@@ -7,9 +7,9 @@
 
 StarShip::StarShip()
 {
-	TextureManager::Instance().load("../Assets/textures/ncl_small.png", "starship");
+	TextureManager::Instance()->load("../Assets/textures/ncl_small.png", "starship");
 
-	auto size = TextureManager::Instance().getTextureSize("starship");
+	auto size = TextureManager::Instance()->getTextureSize("starship");
 	setWidth(size.x);
 	setHeight(size.y);
 
@@ -35,7 +35,7 @@ void StarShip::draw()
 	const auto y = getTransform()->position.y;
 
 	// draw the starship
-	TextureManager::Instance().draw("starship", x, y, getCurrentHeading(), 255, true);
+	TextureManager::Instance()->draw("starship", x, y, getCurrentHeading(), 255, true);
 }
 
 void StarShip::update()
@@ -119,7 +119,7 @@ void StarShip::m_move()
 {
 	Seek();
 
-	auto deltaTime = TheGame::Instance().getDeltaTime();
+	auto deltaTime = TheGame::Instance()->getDeltaTime();
 	
 	getRigidBody()->acceleration = getCurrentDirection() * getAccelerationRate();
 

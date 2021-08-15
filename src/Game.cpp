@@ -50,12 +50,12 @@ bool Game::init(const char* title, const int x, const int y, const int width, co
 
 			// create a new SDL Renderer and store it in the Singleton
 			const auto renderer = (Config::make_resource(SDL_CreateRenderer(m_pWindow.get(), -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC)));
-			Renderer::Instance().setRenderer(renderer);
+			Renderer::Instance()->setRenderer(renderer);
 
-			if (Renderer::Instance().getRenderer() != nullptr) // render init success
+			if (Renderer::Instance()->getRenderer() != nullptr) // render init success
 			{
 				std::cout << "renderer creation success" << std::endl;
-				SDL_SetRenderDrawColor(Renderer::Instance().getRenderer(), 255, 255, 255, 255);
+				SDL_SetRenderDrawColor(Renderer::Instance()->getRenderer(), 255, 255, 255, 255);
 			}
 			else
 			{
@@ -98,8 +98,8 @@ void Game::start()
 {
 	m_currentSceneState = NO_SCENE;
 
-	//changeSceneState(START_SCENE);
-	changeSceneState(PLAY_SCENE);
+	changeSceneState(START_SCENE);
+	//changeSceneState(PLAY_SCENE);
 }
 
 bool Game::isRunning() const
@@ -144,7 +144,7 @@ void Game::changeSceneState(const SceneState new_state)
 			std::cout << "cleaning previous scene" << std::endl;
 			FontManager::Instance()->clean();
 			std::cout << "cleaning FontManager" << std::endl;
-			TextureManager::Instance().clean();
+			TextureManager::Instance()->clean();
 			std::cout << "cleaning TextureManager" << std::endl;
 			ImGuiWindowFrame::Instance().clearWindow();
 			std::cout << "clearing ImGui Window" << std::endl;
@@ -190,11 +190,11 @@ void Game::quit()
 
 void Game::render() const
 {
-	SDL_RenderClear(Renderer::Instance().getRenderer()); // clear the renderer to the draw colour
+	SDL_RenderClear(Renderer::Instance()->getRenderer()); // clear the renderer to the draw colour
 
 	m_currentScene->draw();
 
-	SDL_RenderPresent(Renderer::Instance().getRenderer()); // draw to the screen
+	SDL_RenderPresent(Renderer::Instance()->getRenderer()); // draw to the screen
 
 	ImGuiWindowFrame::Instance().Render();
 }

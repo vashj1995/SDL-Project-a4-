@@ -6,9 +6,9 @@
 
 Obstacle::Obstacle()
 {
-	TextureManager::Instance().load("../Assets/textures/obstacle.png", "obstacle");
+	TextureManager::Instance()->load("../Assets/textures/obstacle.png", "obstacle");
 
-	auto size = TextureManager::Instance().getTextureSize("obstacle");
+	auto size = TextureManager::Instance()->getTextureSize("obstacle");
 	setWidth(size.x);
 	setHeight(size.y);
 
@@ -25,7 +25,7 @@ Obstacle::~Obstacle()
 
 void Obstacle::draw()
 {
-	TextureManager::Instance().draw("obstacle",
+	TextureManager::Instance()->draw("obstacle",
 		getTransform()->position.x, getTransform()->position.y, 0, 255, true);
 }
 
