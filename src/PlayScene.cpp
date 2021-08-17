@@ -51,6 +51,57 @@ void PlayScene::handleEvents()
 	{
 		TheGame::Instance()->quit();
 	}
+
+//	if (EventManager::Instance().isKeyDown(SDL_SCANCODE_W) || EventManager::Instance().isKeyDown(SDL_SCANCODE_S)
+//		|| EventManager::Instance().isKeyDown(SDL_SCANCODE_A) || EventManager::Instance().isKeyDown(SDL_SCANCODE_D))
+//	{
+//		pfootstep--;
+//		if (pfootstep <= 0)
+//		{
+//			pfootstep = 30;
+//			SoundManager::Instance().playSound("PWalk", 0, 1);
+//		}
+//		if (m_pHunt->getAnimationState() != PLAYER_SHOOT && m_pHunt->getAnimationState() != PLAYER_MELEE)
+//			m_pHunt->setAnimationState(PLAYER_RUN);
+//		m_pHunt->setMoving(true);
+//		if (EventManager::Instance().isKeyDown(SDL_SCANCODE_W))
+//		{
+//			m_pHunt->setYMoving(true);
+//			m_pHunt->setCurrentDirection(glm::vec2(m_pHunt->getCurrentDirection().x, -1.0f));
+//		}
+//		else if (EventManager::Instance().isKeyDown(SDL_SCANCODE_S))
+//		{
+//			m_pHunt->setYMoving(true);
+//			m_pHunt->setCurrentDirection(glm::vec2(m_pHunt->getCurrentDirection().x, 1.0f));
+//		}
+//		else
+//			m_pHunt->setYMoving(false);
+//
+//		if (EventManager::Instance().isKeyDown(SDL_SCANCODE_A))
+//		{
+//			m_pHunt->setXMoving(true);
+//			m_pHunt->setCurrentDirection(glm::vec2(-1.0f, m_pHunt->getCurrentDirection().y));
+//		}
+//		else if (EventManager::Instance().isKeyDown(SDL_SCANCODE_D))
+//		{
+//			m_pHunt->setXMoving(true);
+//			m_pHunt->setCurrentDirection(glm::vec2(1.0f, m_pHunt->getCurrentDirection().y));
+//		}
+//		else
+//		{
+//			if (m_pHunt->getAnimationState() == PLAYER_RUN)
+//				m_pHunt->setAnimationState(PLAYER_IDLE);
+//			m_pHunt->setXMoving(false);
+//		}
+//
+//	}
+//
+//	else
+//	{
+//		if (m_pHunt->getAnimationState() != PLAYER_SHOOT && m_pHunt->getAnimationState() != PLAYER_MELEE)
+//			m_pHunt->setAnimationState(PLAYER_IDLE);
+//		m_pHunt->setMoving(false);
+//	}
 }
 
 void PlayScene::start()

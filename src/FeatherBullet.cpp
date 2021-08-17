@@ -3,8 +3,8 @@
 #include "Game.h"
 FeatherBullet::FeatherBullet(float x, float y, float r) : m_Orientation(glm::vec2(0.0f, -1.0f)), m_RotationAngle(r), m_accelerationRate(0.0f), m_MaxSpeed(2.0f)
 {
-	//TextureManager::Instance()->load("png", "Feather");
-	//auto size = TextureManager::Instance()->getTextureSize("Feather");
+	//TextureManager::Instance()->load("png", "Spear");
+	//auto size = TextureManager::Instance()->getTextureSize("Spear");
 
 	//setWidth(size.x);
 	//setHeight(size.y);
@@ -21,7 +21,7 @@ FeatherBullet::~FeatherBullet()
 
 void FeatherBullet::draw()
 {
-	//TextureManager::Instance()->draw("Feather", getTransform()->position.x, getTransform()->position.y, m_RotationAngle, 255, false);
+	//TextureManager::Instance()->draw("Spear", getTransform()->position.x, getTransform()->position.y, m_RotationAngle, 255, false);
 }
 
 void FeatherBullet::update()

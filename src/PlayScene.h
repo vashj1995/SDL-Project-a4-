@@ -6,9 +6,14 @@
 #include "Button.h"
 #include "Label.h"
 #include "Obstacle.h"
-#include "ship.h"
-//#include "StarShip.h"
+#include "Huntress.h"
 #include "Target.h"
+#include "MapNode.h"
+#include "Melee.h"
+#include "FeatherBullet.h"
+#include "RCE.h"
+#include "CCE.h"
+
 
 class PlayScene : public Scene
 {
@@ -40,12 +45,18 @@ private:
 	//Target
 	Target* m_pTarget;
 
+	//Huntress
+	//Huntress* m_pHunt;
+
 	//Obstacles
 	Obstacle* m_pObstacle[5];
 
 	//labels 
 	Label* m_pInstructions{};
 	Label* m_UIScore;
+
+	int pfootstep = 0;
+
 };
 
 #endif /* defined (__PLAY_SCENE__) */
