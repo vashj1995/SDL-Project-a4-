@@ -228,6 +228,18 @@
     <ClCompile Include="..\src\Agent.cpp">
       <Filter>Decision Stuff\Additional Things</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\FeatherBullet.cpp">
+      <Filter>Decision Stuff\Additional Things</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\CCE.cpp">
+      <Filter>Decision Stuff\Characters</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Melee.cpp">
+      <Filter>Decision Stuff\Additional Things</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\RCE.cpp">
+      <Filter>Decision Stuff\Characters</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\src\StartScene.h">
@@ -469,6 +481,18 @@
     </ClInclude>
     <ClInclude Include="..\src\AgentType.h">
       <Filter>Decision Stuff\Additional Things</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\FeatherBullet.h">
+      <Filter>Decision Stuff\Additional Things</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\CCE.h">
+      <Filter>Decision Stuff\Characters</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\Melee.h">
+      <Filter>Decision Stuff\Additional Things</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\RCE.h">
+      <Filter>Decision Stuff\Characters</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
