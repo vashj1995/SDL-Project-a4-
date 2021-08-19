@@ -9,7 +9,7 @@
 
 //Add this when it's done, I know i need. a lot for it lol. 
 
-//#include "DecisionTree.h"
+#include "DecisionTree.h"
 #include "Sprite.h"
 
 class Enemy : public Agent
@@ -84,8 +84,8 @@ public:
 	int patrolStart, patrolEnd, patrolCurrent, attackCooldown;
 
 	//Decision Tree
-	/*DecisionTree* decisionTree;
-	DecisionTree* getDecisionTree();*/
+	DecisionTree* decisionTree;
+	DecisionTree* getDecisionTree();
 
 };
 

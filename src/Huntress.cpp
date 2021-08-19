@@ -32,15 +32,15 @@ Huntress::Huntress() : m_maxSpeed(10.0f), m_currentAnimationState(PLAYER_IDLE)
 	setLOSDistance(400.0f); // 5 ppf x 80 feet
 	setLOSColour(glm::vec4(1, 0, 0, 1));
 	setHasLOS(false);
-	//setDetectionDistance(60.0f);
-	//setDetectionColor(glm::vec4(0, 0, 1, 1));
-	//setHasDetection(false);
+	setDetectionDistance(60.0f);
+	setDetectionColor(glm::vec4(0, 0, 1, 1));
+	setHasDetection(false);
 	setDebug(false);
 	setHealth(3);
 	setHealthPostion(getTransform()->position - glm::vec2(40.0f, 25.0f));
 	setAnimationState(PLAYER_IDLE);
 
-	m_buildAnimations();
+	//m_buildAnimations();
 }
 
 
@@ -78,7 +78,7 @@ void Huntress::draw()
 			(glm::vec2(getTransform()->position.x + getWidth() / 2, getTransform()->position.y + getHeight() / 2)) + getCurrentDirection() * getLOSDistance(), getLOSColour());
 
 		// draw detection radius
-		//Util::DrawCircle(glm::vec2(getTransform()->position.x + getWidth() / 2, getTransform()->position.y + getHeight() / 2), getDetectionDistance(), getDetectionColor());
+		Util::DrawCircle(glm::vec2(getTransform()->position.x + getWidth() / 2, getTransform()->position.y + getHeight() / 2), getDetectionDistance(), getDetectionColor());
 	}
 	drawHeath();
 }

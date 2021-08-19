@@ -177,11 +177,10 @@ bool Enemy::m_animationsExists(const std::string & id)
 	return m_pAnimations.find(id) != m_pAnimations.end();
 }
 
-//Uncomment when decision tree done!
-//DecisionTree* Enemy::getDecisionTree()
-//{
-//	return decisionTree;
-//}
+DecisionTree* Enemy::getDecisionTree()
+{
+	return decisionTree;
+}
 
 void Enemy::m_reset()
 {

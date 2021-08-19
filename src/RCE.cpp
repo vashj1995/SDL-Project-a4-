@@ -36,9 +36,9 @@ RCE::RCE()
 	setLOSDistance(400.0f); // 5 ppf x 80 feet
 	setLOSColour(glm::vec4(1, 0, 0, 1));
 	setHasLOS(false);
-	//setDetectionDistance(getLOSDistance() - 50.0f); //Detection
-	//setDetectionColor(glm::vec4(0, 0, 1, 1));
-	//setHasDetection(false);
+	setDetectionDistance(getLOSDistance() - 50.0f); //Detection
+	setDetectionColor(glm::vec4(0, 0, 1, 1));
+	setHasDetection(false);
 	setHealth(3);
 	setHealthPostion(getTransform()->position - glm::vec2(40.0f, 25.0f));
 	setAnimationState(ENEMY_IDLE);
@@ -53,8 +53,8 @@ RCE::RCE()
 	setminFireDistanceColour(glm::vec4(0, 0, 1, 1));
 	setInrange(false);
 
-	/*decisionTree = new DecisionTree();
-	decisionTree->setAgent(this);*/
+	decisionTree = new DecisionTree();
+	decisionTree->setAgent(this);
 }
 
 
@@ -95,7 +95,7 @@ void RCE::draw()
 
 		// draw detection radius
 		Util::DrawCircle(glm::vec2(getTransform()->position.x + getWidth() / 2, getTransform()->position.y + getHeight() / 2), getFireDistance(), getFireDetectionColour());
-		//Util::DrawCircle(glm::vec2(getTransform()->position.x + getWidth() / 2, getTransform()->position.y + getHeight() / 2), getDetectionDistance(), getDetectionColor());
+		Util::DrawCircle(glm::vec2(getTransform()->position.x + getWidth() / 2, getTransform()->position.y + getHeight() / 2), getDetectionDistance(), getDetectionColor());
 
 		Util::DrawCircle(glm::vec2(getTransform()->position.x + getWidth() / 2, getTransform()->position.y + getHeight() / 2), getMinFireDistance(), getMinFireDistancecolour());
 	}

@@ -285,3 +285,34 @@ void Agent::m_changeDirection()
 	const auto y = sin(m_currentHeading * Util::Deg2Rad);
 	m_currentDirection = glm::vec2(x, y);
 }
+
+float Agent::getDetectionDistance() const
+{
+	return m_DetectionDistance;
+}
+
+bool Agent::hasDetection() const
+{
+	return m_hasDetection;
+}
+
+glm::vec4 Agent::getDetectionColor() const
+{
+	return m_DetectionColour;
+}
+
+void Agent::setDetectionDistance(float distance)
+{
+	m_DetectionDistance = distance;
+}
+
+void Agent::setHasDetection(bool state)
+{
+	m_hasDetection = state;
+	m_DetectionColour = (m_hasDetection) ? glm::vec4(0, 1, 0, 1) : glm::vec4(0, 0, 1, 1);
+}
+
+void Agent::setDetectionColor(glm::vec4 colour)
+{
+	m_DetectionColour = colour;
+}

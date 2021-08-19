@@ -1,14 +1,13 @@
 #pragma once
-#ifndef __SHIP__
-#define __SHIP__
+#ifndef __HUNTRESS__
+#define __HUNTRESS__
 
 #include "Agent.h"
 #include "TextureManager.h"
 #include "PlayerAnimationState.h"
-#include <glm/vec4.hpp>
+//#include <glm/vec4.hpp>
 
 #include "Sprite.h"
-
 
 class Huntress final : public Agent
 {
@@ -56,4 +55,4 @@ private:
 };
 
 
-#endif /* defined (__SHIP__) */
+#endif /* defined (__HUNTRESS__) */

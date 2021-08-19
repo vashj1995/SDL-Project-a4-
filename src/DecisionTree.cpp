@@ -62,47 +62,46 @@ void DecisionTree::Display()
 	}
 }
 
-//void DecisionTree::Update()
-//{
-//	if (m_agent != nullptr)
-//	{
-//		m_LOSNode->setLOS(m_agent->hasLOS());
-//
-//		m_RadiusNode->setIsWithinRadius(m_agent->hasDetection());
-//
-//		m_HealthNode->setHealthCondition(m_agent->getHealthState());
-//
-//		if (m_agent->getAgentType() == RANGED_ENEMY)
-//		{
-//			m_BehindCoverNode->setBehindCover(m_agent->getBehindCoverState());
-//
-//			m_RecentlyHitNode->setRecentlyHit(m_agent->getHitState());
-//
-//			m_AttackRangeNode->setAttackRange(m_agent->getRangedAttackState());
-//
-//			m_RangeDistanceNode->setRangeDistance(m_agent->getInRange());
-//		}
-//		else if (m_agent->getAgentType() == CLOSE_COMBAT_ENEMY)
-//			m_CloseCombatNode->setIsWithinCombatRange(m_agent->getCloseCombat());
-//
-//	}
-//}
+void DecisionTree::Update()
+{
+	if (m_agent != nullptr)
+	{
+		m_LOSNode->setLOS(m_agent->hasLOS());
 
-// In-order Traversal
-//std::string DecisionTree::MakeDecision()
-//{
-//	//Update();
-//
-//	auto currentNode = m_treeNodeList[0];
-//
-//	while (!currentNode->isLeaf)
-//		currentNode = (currentNode->data) ? (currentNode->Right) : (currentNode->Left);
-//
-//	setCurrentNode(currentNode);
-//	return currentNode->name;
-//
-//
-//}
+		m_RadiusNode->setIsWithinRadius(m_agent->hasDetection());
+
+		m_HealthNode->setHealthCondition(m_agent->getHealthState());
+
+		if (m_agent->getAgentType() == RANGED_ENEMY)
+		{
+			m_BehindCoverNode->setBehindCover(m_agent->getBehindCoverState());
+
+			m_RecentlyHitNode->setRecentlyHit(m_agent->getHitState());
+
+			m_AttackRangeNode->setAttackRange(m_agent->getRangedAttackState());
+
+			m_RangeDistanceNode->setRangeDistance(m_agent->getInRange());
+		}
+		else if (m_agent->getAgentType() == CLOSE_COMBAT_ENEMY)
+			m_CloseCombatNode->setIsWithinCombatRange(m_agent->getCloseCombat());
+
+	}
+}
+
+std::string DecisionTree::MakeDecision()
+{
+	//Update();
+
+	auto currentNode = m_treeNodeList[0];
+
+	while (!currentNode->isLeaf)
+		currentNode = (currentNode->data) ? (currentNode->Right) : (currentNode->Left);
+
+	setCurrentNode(currentNode);
+	return currentNode->name;
+
+
+}
 
 void DecisionTree::m_buildTree()
 {

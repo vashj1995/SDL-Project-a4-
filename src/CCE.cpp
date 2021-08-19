@@ -33,9 +33,9 @@ CCE::CCE()
 	setLOSDistance(400.0f); // 5 ppf x 80 feet
 	setLOSColour(glm::vec4(1, 0, 0, 1));
 	setHasLOS(false);
-	//setDetectionDistance(200.0f);
-	//setDetectionColor(glm::vec4(0, 0, 1, 1));
-	//setHasDetection(false);
+	setDetectionDistance(200.0f);
+	setDetectionColor(glm::vec4(0, 0, 1, 1));
+	setHasDetection(false);
 	setHealth(3);
 	setHealthPostion(getTransform()->position - glm::vec2(40.0f, 25.0f));
 	setAnimationState(ENEMY_RUN);
@@ -46,8 +46,8 @@ CCE::CCE()
 
 	deathCooldown = 60;
 
-	//decisionTree = new DecisionTree();
-	//decisionTree->setAgent(this);
+	decisionTree = new DecisionTree();
+	decisionTree->setAgent(this);
 	Hitbox = new SDL_FRect({ getTransform()->position.x, getTransform()->position.y, 64.0f, 64.0f });
 	//m_buildAnimations();
 }
