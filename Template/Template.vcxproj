@@ -206,7 +206,6 @@
     <ClCompile Include="..\src\Label.cpp" />
     <ClCompile Include="..\src\PlayScene.cpp" />
     <ClCompile Include="..\src\main.cpp" />
-    <ClCompile Include="..\src\Plane.cpp" />
     <ClCompile Include="..\src\Player.cpp" />
     <ClCompile Include="..\src\Renderer.cpp" />
     <ClCompile Include="..\src\Scene.cpp" />
@@ -288,7 +287,6 @@
     <ClInclude Include="..\src\Label.h" />
     <ClInclude Include="..\src\MouseButtons.h" />
     <ClInclude Include="..\src\PlayScene.h" />
-    <ClInclude Include="..\src\Plane.h" />
     <ClInclude Include="..\src\Player.h" />
     <ClInclude Include="..\src\PlayerAnimationState.h" />
     <ClInclude Include="..\src\Renderer.h" />
