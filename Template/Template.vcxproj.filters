@@ -69,9 +69,6 @@
     <ClCompile Include="..\src\TextureManager.cpp">
       <Filter>Managers</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\Player.cpp">
-      <Filter>Game Objects</Filter>
-    </ClCompile>
     <ClCompile Include="..\src\PlayScene.cpp">
       <Filter>Scenes</Filter>
     </ClCompile>
@@ -80,9 +77,6 @@
     </ClCompile>
     <ClCompile Include="..\src\Label.cpp">
       <Filter>UI Objects</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\ship.cpp">
-      <Filter>Game Objects</Filter>
     </ClCompile>
     <ClCompile Include="..\src\Target.cpp">
       <Filter>Game Objects</Filter>
@@ -146,9 +140,6 @@
     </ClCompile>
     <ClCompile Include="..\include\IMGUI_SDL\imgui_sdl.cpp">
       <Filter>IMGUI</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\StarShip.cpp">
-      <Filter>Game Objects</Filter>
     </ClCompile>
     <ClCompile Include="..\src\Tile.cpp">
       <Filter>Game Objects</Filter>
@@ -263,9 +254,6 @@
     <ClInclude Include="..\src\SceneState.h">
       <Filter>Enums</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\Player.h">
-      <Filter>Game Objects</Filter>
-    </ClInclude>
     <ClInclude Include="..\src\PlayerAnimationState.h">
       <Filter>Enums</Filter>
     </ClInclude>
@@ -286,9 +274,6 @@
     </ClInclude>
     <ClInclude Include="..\src\Label.h">
       <Filter>UI Objects</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\ship.h">
-      <Filter>Game Objects</Filter>
     </ClInclude>
     <ClInclude Include="..\src\Target.h">
       <Filter>Game Objects</Filter>
@@ -373,9 +358,6 @@
     </ClInclude>
     <ClInclude Include="..\include\IMGUI_SDL\imgui_sdl.h">
       <Filter>IMGUI</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\StarShip.h">
-      <Filter>Game Objects</Filter>
     </ClInclude>
     <ClInclude Include="..\src\Tile.h">
       <Filter>Game Objects</Filter>
