@@ -8,11 +8,13 @@
 
 Huntress::Huntress() : m_maxSpeed(10.0f), m_currentAnimationState(PLAYER_IDLE)
 {
-	//Gabe. Base bc i genuinely don't remember or have the brainpower to remember what we called it lol
-	TextureManager::Instance()->loadSpriteSheet("../Assets/sprites/CharacterSheet.txt", "../Assets/sprites/CharacterSheet.png", "CharacterSheet");
+	TextureManager::Instance()->loadSpriteSheet(
+		"../Assets/sprites/huntressIdle.txt",
+		"../Assets/sprites/huntressIdle.png", 
+		"huntressIdle");
 
 
-	setSpriteSheet(TextureManager::Instance()->getSpriteSheet("CharacterSheet"));
+	setSpriteSheet(TextureManager::Instance()->getSpriteSheet("huntressIdle"));
 
 	//Gabe. Set Width and Height to appropriate things. 
 	setWidth(40);

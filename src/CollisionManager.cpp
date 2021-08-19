@@ -367,32 +367,33 @@ bool CollisionManager::pointRectCheck(const glm::vec2 point, const glm::vec2 rec
 	return false;
 }
 
-// assumptions - the list of objects are stored so that they are facing the target and the target is loaded last
-bool CollisionManager::LOSCheck(glm::vec2 start_point, glm::vec2 end_point, const std::vector<DisplayObject*>& objects, DisplayObject* target)
-{
-	for (auto object : objects)
-	{
-		auto objectOffset = glm::vec2(object->getWidth() * 0.5f, object->getHeight() * 0.5f);
-		if (lineRectCheck(start_point, end_point, object->getTransform()->position - objectOffset, object->getWidth(), object->getHeight()))
-		{
-
-			if (object->getType() == target->getType())
-			{
-			return true;
-			}
-			if (object->getType() == GameObjectType::OBSTACLE)
-			{
-				return false;
-			}
-			/*if (object->getType() == target->getType())
-			{
-				return true;
-			}
-			return false;*/
-		}
-	}
-	return false;
-}
+//LATER. NEEDS FIXING
+//// assumptions - the list of objects are stored so that they are facing the target and the target is loaded last
+//bool CollisionManager::LOSCheck(glm::vec2 start_point, glm::vec2 end_point, const std::vector<DisplayObject*>& objects, DisplayObject* target)
+//{
+//	for (auto object : objects)
+//	{
+//		auto objectOffset = glm::vec2(object->getWidth() * 0.5f, object->getHeight() * 0.5f);
+//		if (lineRectCheck(start_point, end_point, object->getTransform()->position - objectOffset, object->getWidth(), object->getHeight()))
+//		{
+//
+//			if (object->getType() == target->getType())
+//			{
+//			return true;
+//			}
+//			if (object->getType() == GameObjectType::OBSTACLE)
+//			{
+//				return false;
+//			}
+//			/*if (object->getType() == target->getType())
+//			{
+//				return true;
+//			}
+//			return false;*/
+//		}
+//	}
+//	return false;
+//}
 
 CollisionManager::CollisionManager()
 = default;

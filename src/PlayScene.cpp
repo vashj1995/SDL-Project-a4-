@@ -971,10 +971,11 @@ void PlayScene::m_CheckHuntLOS(DisplayObject * target_object)
 			}
 		}
 		contactList.push_back(target_object); // add the target to the end of the list
-		auto hasLOS = CollisionManager::LOSCheck(m_pHunt->getTransform()->position,
-			m_pHunt->getTransform()->position + m_pHunt->getCurrentDirection() * m_pHunt->getLOSDistance(), contactList, target_object);
+		//LATER
+		/*auto hasLOS = CollisionManager::LOSCheck(m_pHunt->getTransform()->position,
+			m_pHunt->getTransform()->position + m_pHunt->getCurrentDirection() * m_pHunt->getLOSDistance(), contactList, target_object);*/
 
-		m_pHunt->setHasLOS(hasLOS);
+		//m_pHunt->setHasLOS(hasLOS);
 	}
 }
 
