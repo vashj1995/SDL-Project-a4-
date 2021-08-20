@@ -257,6 +257,30 @@ void Huntress::m_buildAnimations()
 	runAnimation.frames.push_back(m_CharacterAnimation->getFrame("huntressRun8"));
 
 	setAnimation(runAnimation);
+
+	Animation meleeAnimation = Animation();
+
+	meleeAnimation.name = "melee";
+	meleeAnimation.frames.push_back(m_CharacterAnimation->getFrame("huntressMelee1"));
+	meleeAnimation.frames.push_back(m_CharacterAnimation->getFrame("huntressMelee2"));
+	meleeAnimation.frames.push_back(m_CharacterAnimation->getFrame("huntressMelee3"));
+	meleeAnimation.frames.push_back(m_CharacterAnimation->getFrame("huntressMelee4"));
+	meleeAnimation.frames.push_back(m_CharacterAnimation->getFrame("huntressMelee5"));
+
+	setAnimation(meleeAnimation);
+
+	Animation rangedAnimation = Animation();
+
+	rangedAnimation.name = "ranged";
+	rangedAnimation.frames.push_back(m_CharacterAnimation->getFrame("huntressRanged1"));
+	rangedAnimation.frames.push_back(m_CharacterAnimation->getFrame("huntressRanged2"));
+	rangedAnimation.frames.push_back(m_CharacterAnimation->getFrame("huntressRanged3"));
+	rangedAnimation.frames.push_back(m_CharacterAnimation->getFrame("huntressRanged4"));
+	rangedAnimation.frames.push_back(m_CharacterAnimation->getFrame("huntressRanged5"));
+	rangedAnimation.frames.push_back(m_CharacterAnimation->getFrame("huntressRanged6"));
+	rangedAnimation.frames.push_back(m_CharacterAnimation->getFrame("huntressRanged7"));
+
+	setAnimation(rangedAnimation);
 }
 
 void Huntress::m_checkBounds()
