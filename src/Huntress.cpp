@@ -9,22 +9,21 @@
 Huntress::Huntress() : m_maxSpeed(10.0f), m_currentAnimationState(PLAYER_IDLE)
 {
 	TextureManager::Instance()->loadSpriteSheet(
-		"../Assets/sprites/huntressIdle.txt",
-		"../Assets/sprites/huntressIdle.png", 
-		"huntressIdle");
+		"../Assets/sprites/atlas.txt",
+		"../Assets/sprites/atlas.png", 
+		"spriteSheet");
 
+	setSpriteSheet(TextureManager::Instance()->getSpriteSheet("spriteSheet"));
 
-	setSpriteSheet(TextureManager::Instance()->getSpriteSheet("huntressIdle"));
-
-	//Gabe. Set Width and Height to appropriate things. 
-	setWidth(40);
-	setHeight(40);
+	//Defining frame width and height
+	setWidth(90);
+	setHeight(70);
 
 	getTransform()->position = glm::vec2(400.0f, 300.0f);
 	getRigidBody()->velocity = glm::vec2(0.0f, 0.0f);
 	getRigidBody()->acceleration = glm::vec2(0.0f, 0.0f);
 	getRigidBody()->isColliding = false;
-	setType(SHIP);
+	setType(PLAYER);
 
 	setCurrentHeading(0.0f); // current facing angle
 	setCurrentDirection(glm::vec2(1.0f, 0.0f)); // facing right
@@ -42,7 +41,7 @@ Huntress::Huntress() : m_maxSpeed(10.0f), m_currentAnimationState(PLAYER_IDLE)
 	setHealthPostion(getTransform()->position - glm::vec2(40.0f, 25.0f));
 	setAnimationState(PLAYER_IDLE);
 
-	//m_buildAnimations();
+	m_buildAnimations();
 }
 
 
@@ -55,20 +54,22 @@ void Huntress::draw()
 	const auto x = getTransform()->position.x;
 	const auto y = getTransform()->position.y;
 
-	
 	switch (m_currentAnimationState)
 	{
 	case PLAYER_IDLE:
-		TextureManager::Instance()->playAnimation("CharacterSheet", getAnimation("idle"), x, y, 0.10f, getCurrentHeading(), 255, false);
+		TextureManager::Instance()->playAnimation("spriteSheet", getAnimation("idle"), x, y, 0.10f, getCurrentHeading(), 255, false);
+		break;									  
+	case PLAYER_RUN:							  
+		TextureManager::Instance()->playAnimation("spriteSheet", getAnimation("run"), x, y, 0.10f, getCurrentHeading(), 255, false);
+		break;									   
+	case PLAYER_SHOOT:							   
+		TextureManager::Instance()->playAnimation("spriteSheet", getAnimation("shoot"), x, y, 0.10f, getCurrentHeading(), 255, false);
+		break;									   
+	case PLAYER_MELEE:							   
+		TextureManager::Instance()->playAnimation("spriteSheet", getAnimation("melee"), x, y, 0.10f, getCurrentHeading(), 255, false);
 		break;
-	case PLAYER_RUN:
-		TextureManager::Instance()->playAnimation("CharacterSheet", getAnimation("run"), x, y, 0.10f, getCurrentHeading(), 255, false);
-		break;
-	case PLAYER_SHOOT:
-		TextureManager::Instance()->playAnimation("CharacterSheet", getAnimation("shoot"), x, y, 0.10f, getCurrentHeading(), 255, false);
-		break;
-	case PLAYER_MELEE:
-		TextureManager::Instance()->playAnimation("CharacterSheet", getAnimation("melee"), x, y, 0.10f, getCurrentHeading(), 255, false);
+	case PLAYER_DEATH:
+		TextureManager::Instance()->playAnimation("spriteSheet", getAnimation("death"), x, y, 0.10f, getCurrentHeading(), 255, false);
 		break;
 	}
 
@@ -88,7 +89,6 @@ void Huntress::draw()
 
 void Huntress::update()
 {
-
 	if (getMoving())
 		move();
 	m_checkBounds();
@@ -96,11 +96,54 @@ void Huntress::update()
 	auto angle = (atan2(EventManager::Instance().getMousePosition().y - getTransform()->position.y, EventManager::Instance().getMousePosition().x - getTransform()->position.x)
 		* 180.00 / 3.1415926);
 	setCurrentHeading(angle);
+
+		// State machine can go here. With parsing events.
+		switch (m_currentAnimationState)
+		{
+		case PLAYER_IDLE_RIGHT:
+			// Any actions here.
+			// Parse transitions. Idle->Runs first.
+			if (EventManager::Instance().isKeyDown(SDL_SCANCODE_A))
+			{
+				setAnimationState(PLAYER_RUN_LEFT);
+			}
+			else if (EventManager::Instance().isKeyDown(SDL_SCANCODE_D))
+			{
+				setAnimationState(PLAYER_RUN_RIGHT);
+			}
+			break;
+		case PLAYER_IDLE_LEFT:
+			// Any actions here.
+			// Parse transitions. Idle->Runs first.
+			if (EventManager::Instance().isKeyDown(SDL_SCANCODE_A))
+			{
+				setAnimationState(PLAYER_RUN_LEFT);
+			}
+			else if (EventManager::Instance().isKeyDown(SDL_SCANCODE_D))
+			{
+				setAnimationState(PLAYER_RUN_RIGHT);
+			}
+			break;
+		case PLAYER_RUN_RIGHT:
+			// Any actions here.
+			// Parse transitions. Start with transition back to idle.
+			if (EventManager::Instance().isKeyUp(SDL_SCANCODE_D))
+			{
+				setAnimationState(PLAYER_IDLE_RIGHT);
+			}
+			break;
+		case PLAYER_RUN_LEFT:
+			// Any actions here.
+			// Parse transitions. Start with transition back to idle.
+			if (EventManager::Instance().isKeyUp(SDL_SCANCODE_A))
+			{
+				setAnimationState(PLAYER_IDLE_LEFT);
+			}
+			break;
+		}
 }
 
-void Huntress::clean()
-{
-}
+void Huntress::clean() {}
 
 void Huntress::turnRight()
 {
@@ -187,7 +230,33 @@ Animation& Huntress::getAnimation(const std::string & name)
 
 void Huntress::m_buildAnimations()
 {
-	//Gabe. For Gabe to put here lol
+	Animation idleAnimation = Animation();
+
+	idleAnimation.name = "idle";
+	idleAnimation.frames.push_back(m_CharacterAnimation->getFrame("huntressIdle1"));
+	idleAnimation.frames.push_back(m_CharacterAnimation->getFrame("huntressIdle2"));
+	idleAnimation.frames.push_back(m_CharacterAnimation->getFrame("huntressIdle3"));
+	idleAnimation.frames.push_back(m_CharacterAnimation->getFrame("huntressIdle4"));
+	idleAnimation.frames.push_back(m_CharacterAnimation->getFrame("huntressIdle5"));
+	idleAnimation.frames.push_back(m_CharacterAnimation->getFrame("huntressIdle6"));
+	idleAnimation.frames.push_back(m_CharacterAnimation->getFrame("huntressIdle7"));
+	idleAnimation.frames.push_back(m_CharacterAnimation->getFrame("huntressIdle8"));
+
+	setAnimation(idleAnimation);
+
+	Animation runAnimation = Animation();
+
+	runAnimation.name = "run";
+	runAnimation.frames.push_back(m_CharacterAnimation->getFrame("huntressRun1"));
+	runAnimation.frames.push_back(m_CharacterAnimation->getFrame("huntressRun2"));
+	runAnimation.frames.push_back(m_CharacterAnimation->getFrame("huntressRun3"));
+	runAnimation.frames.push_back(m_CharacterAnimation->getFrame("huntressRun4"));
+	runAnimation.frames.push_back(m_CharacterAnimation->getFrame("huntressRun5"));
+	runAnimation.frames.push_back(m_CharacterAnimation->getFrame("huntressRun6"));
+	runAnimation.frames.push_back(m_CharacterAnimation->getFrame("huntressRun7"));
+	runAnimation.frames.push_back(m_CharacterAnimation->getFrame("huntressRun8"));
+
+	setAnimation(runAnimation);
 }
 
 void Huntress::m_checkBounds()
